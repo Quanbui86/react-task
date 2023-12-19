@@ -1,0 +1,123 @@
+* {
+  font-family: 'Unna', serif;
+}
+
+.container {
+  margin: 0;
+  box-sizing: border-box;
+  display: flex;
+  height: 100vh;
+  border: 1px gray solid;
+}
+.form {
+  margin: 0;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  background-color: #61dafb;
+  flex: 1 0 10rem;
+  min-height: 100vh;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+}
+.label {
+  line-height: 4rem;
+  background-color: #022c37;
+  width: 50%;
+  color: antiquewhite;
+  text-align: center;
+  font-size: 2rem;
+}
+.input {
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+}
+.taskInput {
+  box-sizing: border-box;
+  height: 4rem;
+  width: 100%;
+  font-size: 2rem;
+  padding-left: 1rem ;
+}
+.inputButton {
+  border-radius: 1rem;
+  cursor: pointer;
+  border: none;
+  font-size: 1.5rem;
+  padding: 0.7rem 1.5rem;
+  background-color: aliceblue;
+  transition: all 0.3s linear;
+}
+.taskList {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 2rem;
+  height: 100%;
+  background-color:blueviolet;
+  flex: 2 0 10rem;
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  min-height: 100vh;
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+.listContain {
+  display: flex;
+  background-color: brown;
+  align-items: center;
+  width: 15rem;
+  height: 4rem;
+  justify-content: space-between;
+  padding: 0 1rem;
+  gap: 1rem;
+}
+.list {
+  display: flex;
+  justify-content: flex-start;
+  height: 5rem;
+  align-items: center;
+  background-color: rgb(189, 65, 65);
+  height: 2rem;
+  flex: 1 0 5rem;
+  padding: 0 1rem;
+  font-size: 1.5rem;
+  color: aliceblue;
+}
+.button {
+  position: relative;
+  width: 2rem;
+  height: 2rem;
+  padding: 0;
+  cursor: pointer;
+  font-family: 'Unna', serif;
+  font-weight: 700;
+  transition: all 300ms ease-out;
+
+}
+.button:hover, .inputButton:hover {
+  background-color: black;
+  color: antiquewhite;
+  box-shadow: 1px 1px 2px 1px white;
+}
+.button:active, .inputButton:active {
+  transform: translateY(4px);
+}
+.App-link {
+  color: #61dafb;
+}
+
+@keyframes App-logo-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
