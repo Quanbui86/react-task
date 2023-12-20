@@ -2,6 +2,7 @@ import logo from './logo.svg';
 import './App.css';
 import React from 'react';
 import { useState } from 'react';
+import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 function App() {
   let taskPattern = /(?=.*[a-zA-Z]).{2,}$/
@@ -17,8 +18,22 @@ function App() {
       setTaskList(newList)
       event.target.elements.taskInput.value = ''
     }else (alert('input valid task'))
-    
   }
+  const taskLiList = 
+  <TransitionGroup className='taskList'>
+    {taskList.map((task, index)=> {
+      return (
+        <CSSTransition key={index} timeout={500} classNames="item"> 
+        <div className='listContain'>
+            <li key={index} className='list'>{task}</li>
+            <button onClick={()=>handleDelete(task)} className='button'>X</button>
+        </div>
+
+        </CSSTransition>
+      )
+    })}
+  </TransitionGroup>
+  
   return (
     <div className="App">
       <header className="App-header container">
@@ -30,16 +45,8 @@ function App() {
           </div>
         </form>
         <ul className='taskList'>
-          {taskList.map((task, index)=>{
-            return (
-              <div className='listContain'>
-                <li key={index} className='list'>{task}</li>
-                <button onClick={()=>handleDelete(task)} className='button'>X</button>
-              </div>
-            )
-          })}
+          {taskLiList}
         </ul>
-        
       </header>
     </div>
   );
