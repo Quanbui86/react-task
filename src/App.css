@@ -8,18 +8,22 @@
   display: flex;
   min-height: 100vh;
   border: 1px gray solid;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
 }
 .form {
-  margin: 0;
+  margin: 0rem 2rem 0rem 2rem;
   box-sizing: border-box;
   display: flex;
   flex-direction: column;
   background-color: #61dafb;
-  flex: 1 0 10rem;
-  min-height: 100vh;
+  min-height: 50vh-4rem;
   align-items: center;
   justify-content: center;
   gap: 2rem;
+  padding: 1rem;
+  width: 100%;
 }
 .label {
   line-height: 4rem;
@@ -52,23 +56,35 @@
   background-color: aliceblue;
   transition: all 0.3s linear;
 }
-.taskList, .new {
+.taskList{
   box-sizing: border-box;
   margin: 0;
-  padding: 2rem;
-  height: 100%;
   background-color:blueviolet;
   flex: 3 0 10rem;
   display: flex;
   flex-direction: column;
   list-style: none;
-  min-height: calc(100vh - 4rem);
   align-items: flex-start;
   justify-content: flex-start;
   gap: 1rem;
   flex-wrap: wrap;
+  height: 100%;
 }
-
+.taskListGroup, .new {
+  width: 100%;
+  box-sizing: border-box;
+  padding: 2rem;
+  background-color:blueviolet;
+  display: flex;
+  flex-direction: column;
+  list-style: none;
+  min-height: calc(50vh - 4rem);
+  align-items: flex-start;
+  justify-content: flex-start;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin: 0;
+}
 .listContain {
   display: flex;
   background-color: brown;
@@ -121,6 +137,12 @@
   transition: all 300ms ease-out;
 
 }
+.userButton {
+  width: 10rem;
+  height: 3rem;
+  font-size: 2rem;
+  margin: 2rem;
+}
 .button:hover, .inputButton:hover {
   background-color: black;
   color: antiquewhite;
@@ -139,5 +161,11 @@
   }
   to {
     transform: rotate(360deg);
+  }
+}
+@media screen and (max-width: 500px){
+  .userButton{
+    width: 30%;
+    margin: 0.2rem
   }
 }
