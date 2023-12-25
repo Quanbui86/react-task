@@ -5,6 +5,7 @@ import { CSSTransition, TransitionGroup } from 'react-transition-group';
 
 function App() {
   let taskPattern = /(?=.*[a-zA-Z]).{2,}$/
+  const [isUserSelected, setIsUserSelected] = useState(false);
   const [taskList, setTaskList] = useState(['Hoc JS', 'Doc Sach', 'Nau an'])
   const [inputValue, setInputValue] = useState('')
   const [user, setUser] = useState('')
@@ -24,7 +25,6 @@ function App() {
       setInputValue('')
       localStorage.setItem(user, JSON.stringify(newList))
     } else (alert('input valid task'))
-    
   }
   /*useEffect(()=>{
     if (localStorage.getItem('chau'))
@@ -33,17 +33,27 @@ function App() {
     localStorage.setItem('quan',JSON.stringify(['Hoc JS', 'Doc Sach', 'Nau an']))
   },[])
   */
-  function handleChau(){
-    setTaskList(JSON.parse(localStorage.getItem('chau')))
-    setUser('chau')
+  function handleChau(e){
+    const newUser = e.target.name;
+    setUser(newUser);
+    setIsUserSelected(true)
+    localStorage.getItem(newUser) ?
+    setTaskList(JSON.parse(localStorage.getItem(newUser))) :
+    setTaskList([]);
   }
-  function handleUyen(){
-    setTaskList(JSON.parse(localStorage.getItem('uyen')))
-    setUser('uyen')
+  function handleUyen(e){
+    const newUser = e.target.name;
+    setUser(newUser);
+    localStorage.getItem(newUser) ?
+    setTaskList(JSON.parse(localStorage.getItem(newUser))) :
+    setTaskList([]);
   }
-  function handleQuan(){
-    setTaskList(JSON.parse(localStorage.getItem('quan')))
-    setUser('quan')
+  function handleQuan(e){
+    const newUser = e.target.name;
+    setUser(newUser);
+    localStorage.getItem(newUser) ?
+    setTaskList(JSON.parse(localStorage.getItem(newUser))) :
+    setTaskList([]);
   }
   const taskLiList = 
   <TransitionGroup className='taskList'>
@@ -62,16 +72,18 @@ function App() {
   return (
     <div className="App">
       <header className="App-header container">
-        <div>
-          <button className='userButton' onClick={handleChau}>Châu</button>
-          <button className='userButton' onClick={handleUyen}>Uyên</button>
-          <button className='userButton' onClick={handleQuan}>Quân</button>
+        <div className='button-group'>
+          <button className='userButton' onClick={handleChau} name='@@@chau'>Châu</button>
+          <button className='userButton' onClick={handleChau} name ='@@@uyen'>Uyên</button>
+          <button className='userButton' onClick={handleChau} name='@@@quan'>Quân</button>
         </div>
         <form onSubmit={handleSubmit} className='form'>
           <label className='label'>New task</label>
           <div className='input'>
             <input type='text' name='taskInput' className='taskInput' onChange={handleChange} value={inputValue}></input>
-            <input type='submit' value={'Submit'} className='inputButton'></input>
+            <input type='submit' value={'Submit'} className='inputButton' disabled={!isUserSelected}></input>
+            {!isUserSelected && <p>Please select a user to enable the submit button.</p>}
+
           </div>
         </form>
         <ul className='taskListGroup'>

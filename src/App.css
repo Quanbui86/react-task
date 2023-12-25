@@ -56,6 +56,15 @@
   background-color: aliceblue;
   transition: all 0.3s linear;
 }
+.inputButton:disabled {
+  background-color: #cccccc; /* Change this to the color you want */
+  cursor: not-allowed; /* This will change the cursor to a "not allowed" cursor when hovering over the button */
+}
+
+.inputButton:disabled:hover {
+  /* Add the styles you want to remove here. For example, if you're changing the background color on hover, you can reset it here: */
+  background-color: #cccccc; /* Change this to the color you want */
+}
 .taskList{
   box-sizing: border-box;
   margin: 0;
@@ -165,7 +174,13 @@
 }
 @media screen and (max-width: 500px){
   .userButton{
-    width: 30%;
-    margin: 0.2rem
+    max-width: 25%;
+    margin: 1%;
+    padding: 0;
+  }
+  .button-group {
+    width: 100%;
+    display: flex;
+    justify-content: space-evenly;
   }
 }
